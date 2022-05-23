@@ -8,7 +8,8 @@
 #include <unistd.h>
 #include <sys/socket.h>
 #include <arpa/inet.h>
-#include "../common/log.h"
+
+void error_handling(char *message);
 
 int main(int argc, char *argv[]) {
 
@@ -43,8 +44,13 @@ int main(int argc, char *argv[]) {
         error_handling("accept() error");
     }
 
-    char message[] = "Hello, Client!";
-    write(client_sock, message, sizeof(message));
+    for (int i = 0; i < 100; ++i) {
+        //char message[14] = "Hello, Client!";
+        char message[] = "Hello, Client!";
+        write(client_sock, message, sizeof(message));
+    }
+    printf("write data end...\n");
+    sleep(5);
     close(serv_sock);
     close(client_sock);
 

@@ -7,8 +7,7 @@
 #include <unistd.h>
 #include <sys/socket.h>
 #include <arpa/inet.h>
-
-void error_handling(char *message);
+#include "../common/log.h"
 
 int main(int argc, char *argv[]) {
 

@@ -4,6 +4,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include "log.h"
 
 void error_handling(char *message) {
     fputs(message, stderr);
