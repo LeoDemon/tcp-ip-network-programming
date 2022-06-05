@@ -1,5 +1,5 @@
-add_executable(echo_client2.c)
+add_executable(echo_client2 echo_client2.c)
 target_link_libraries(echo_client2 tcp_ip_common)
 
-add_executable(echo_server2.c)
+add_executable(echo_server2 echo_server2.c)
 target_link_libraries(echo_server2 tcp_ip_common)
