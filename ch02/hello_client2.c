@@ -7,6 +7,9 @@
 #include <unistd.h>
 #include <sys/socket.h>
 #include <arpa/inet.h>
+#include <string.h>
+#include "common/datetime.h"
+#include <errno.h>
 
 void error_handling(char *message);
 
@@ -27,9 +30,20 @@ int main(int argc, char *argv[]) {
     serv_addr.sin_addr.s_addr = inet_addr(argv[1]);
     serv_addr.sin_port = htons(atoi(argv[2]));
 
+    char nowTime[30];
+    memset(nowTime, '\0', sizeof(nowTime));
+    now(nowTime);
+
+    printf("[%s]: connect server now...\n", nowTime);
     if (-1 == connect(sock, (struct sockaddr *) &serv_addr, sizeof(serv_addr))) {
-        error_handling("connect() error");
+        memset(nowTime, '\0', sizeof(nowTime));
+        now(nowTime);
+        printf("[%s]: connect() error: [%s]\n", nowTime, strerror(errno));
+        exit(errno);
     }
+    memset(nowTime, '\0', sizeof(nowTime));
+    now(nowTime);
+    printf("[%s]: connect server success...\n", nowTime);
 
     char message[10240];
     // char *msg = message;
@@ -37,7 +51,7 @@ int main(int argc, char *argv[]) {
     int read_len = 0;
     //int i = 0;
     int read_count = 0;
-    sleep(3);
+    //sleep(3);
     while (1) {
         read_count++;
         //str_len = read(sock, &message[i++], 1);

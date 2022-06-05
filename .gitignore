@@ -10,6 +10,6 @@
 .idea
 .idea/*
 
-*.o
-./ch01/hello_client
-./ch01/hello_server
+/build
+/temp
+/cmake-build-debug

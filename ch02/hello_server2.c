@@ -33,9 +33,12 @@ int main(int argc, char *argv[]) {
         error_handling("bind() error");
     }
 
-    if (-1 == listen(serv_sock, 5)) {
+    if (-1 == listen(serv_sock, 3)) {
         error_handling("listen() error");
     }
+    printf("after listen(), sleep 70s...\n");
+    sleep(70);
+    printf("accept connection now...\n");
 
     struct sockaddr_in client_addr;
     socklen_t client_addr_size = sizeof(client_addr);

@@ -1,0 +1,5 @@
+add_executable(hello_client2 hello_client2.c)
+target_link_libraries(hello_client2 tcp_ip_common)
+
+add_executable(hello_server2 hello_server2.c)
+target_link_libraries(hello_server2 tcp_ip_common)
