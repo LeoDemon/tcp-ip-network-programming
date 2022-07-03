@@ -19,6 +19,7 @@ int main(int argc, char **argv) {
     bzero(&ip, sizeof(ip));
     ip.s_addr = inet_addr(argv[1]);
 
+    // len: IPv4=4, IPv6=6
     struct hostent *host = gethostbyaddr((const void *)&ip, sizeof(ip), AF_INET);
     if (host == NULL){
         error_handling("gethostbyaddr failed");

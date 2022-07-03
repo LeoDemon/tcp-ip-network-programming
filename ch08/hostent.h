@@ -9,6 +9,6 @@
 #include <netdb.h>
 #include <arpa/inet.h>
 
-void display(struct hostent *host);
+void display(const struct hostent *host);
 
 #endif //TCP_IP_NETWORK_PROGRAMMING_HOSTENT_H

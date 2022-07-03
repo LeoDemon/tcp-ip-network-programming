@@ -3,7 +3,6 @@
 //
 #include <stdio.h>
 #include <netdb.h>
-#include <arpa/inet.h>
 #include <stdlib.h>
 #include <common/log.h>
 #include "hostent.h"

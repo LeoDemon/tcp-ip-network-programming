@@ -4,7 +4,7 @@
 
 #include "hostent.h"
 
-void display(struct hostent *host) {
+void display(const struct hostent *host) {
     printf("Official name: %s\n", host->h_name);
     printf("Address type: %d: %s\n", host->h_addrtype, host->h_addrtype==AF_INET?"AF_INET":"AF_INET6");
     printf("Address len: %d\n", host->h_length);
