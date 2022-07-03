@@ -12,3 +12,5 @@ target_link_libraries(bound_host2 tcp_ip_common)
 
 add_executable(uecho_con_client uecho_con_client.c)
 target_link_libraries(uecho_con_client tcp_ip_common)
+
+add_executable(test_sockaddr test_sockaddr.c)
