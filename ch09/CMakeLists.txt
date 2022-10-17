@@ -9,3 +9,6 @@ target_link_libraries(sock_reuseaddr tcp_ip_common)
 
 add_executable(sock_tcp_nodelay sock_tcp_nodelay.c)
 target_link_libraries(sock_tcp_nodelay tcp_ip_common)
+
+add_executable(sock_reuseaddr_multi sock_reuseaddr_multi.c)
+target_link_libraries(sock_reuseaddr_multi tcp_ip_common)
