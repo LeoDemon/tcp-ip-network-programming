@@ -17,10 +17,15 @@ int main(int argc, char *argv[]) {
     ssize_t read_len;
     int result;
     struct timeval timeout;
+    // macOS 12.6（Arm64）下将超时放在此处没有问题，即不需要放在下面的 while 循环中
+    // timeout.tv_sec = 3;
+    // timeout.tv_usec = 0;
     while (1) {
+        // Linux 下需要放这里
         timeout.tv_sec = 3;
         timeout.tv_usec = 0;
 
+        printf("timeout: %ld\n", timeout.tv_sec);
         printf("reads[0]: %d, temps[0]: %d\n", reads.fds_bits[0], temps.fds_bits[0]);
         temps = reads;
         result = select(1, &temps, NULL, NULL, &timeout);
