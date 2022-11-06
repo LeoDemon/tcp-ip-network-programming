@@ -9,3 +9,6 @@ target_link_libraries(peek_send tcp_ip_common)
 
 add_executable(peek_recv peek_recv.c)
 target_link_libraries(peek_recv tcp_ip_common)
+
+add_executable(readv readv.c)
+add_executable(writev writev.c)
