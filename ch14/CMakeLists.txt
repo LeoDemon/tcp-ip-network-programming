@@ -1,0 +1,5 @@
+add_executable(news_sender news_sender.c)
+target_link_libraries(news_sender tcp_ip_common)
+
+add_executable(news_receiver news_receiver.c)
+target_link_libraries(news_receiver tcp_ip_common)
