@@ -3,3 +3,9 @@ target_link_libraries(news_sender tcp_ip_common)
 
 add_executable(news_receiver news_receiver.c)
 target_link_libraries(news_receiver tcp_ip_common)
+
+add_executable(news_sender_brd news_sender_brd.c)
+target_link_libraries(news_sender_brd tcp_ip_common)
+
+add_executable(news_receiver_brd news_receiver_brd.c)
+target_link_libraries(news_receiver_brd tcp_ip_common)
