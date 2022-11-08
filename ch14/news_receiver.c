@@ -47,6 +47,7 @@ int main(int argc, char *argv[]) {
         error_handling("socket addr to socket error");
     }
 
+    // 将自身 IP 加入多播地址组
     struct ip_mreq join_adr;
     join_adr.imr_multiaddr.s_addr = inet_addr(argv[1]);
     join_adr.imr_interface.s_addr = htonl(INADDR_ANY);
