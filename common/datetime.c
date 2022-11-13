@@ -22,3 +22,10 @@ char *now(char *time_buffer) {
     strftime(time_buffer, 26, "%Y-%m-%d %H:%M:%S", tm_info);
     return time_buffer;
 }
+
+void display_now() {
+    char nowTime[30];
+    memset(nowTime, '\0', sizeof(nowTime));
+    now(nowTime);
+    printf("current time: [%s]\n", nowTime);
+}

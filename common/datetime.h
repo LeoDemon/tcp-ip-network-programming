@@ -7,5 +7,6 @@
 
 //char *now(char time_buffer[]);
 char *now(char *time_buffer);
+void display_now();
 
 #endif //NETWORK_PROGRAMMING_IN_ACTION_DATETIME_H
