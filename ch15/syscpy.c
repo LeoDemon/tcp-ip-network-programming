@@ -9,6 +9,7 @@
 
 #define BUF_SIZE 3
 
+// system io function
 int main(int argc, char *argv[]) {
     int fd1 = open("news-1.txt", O_RDONLY);
     int fd2 = open("syscpy.txt", O_WRONLY | O_CREAT | O_TRUNC);

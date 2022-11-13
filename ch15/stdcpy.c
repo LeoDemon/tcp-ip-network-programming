@@ -7,6 +7,7 @@
 
 #define BUF_SIZE 3
 
+// standard io function
 int main(int argc, char *argv[]) {
     FILE *fp1 = fopen("news-1.txt", "r");
     FILE *fp2 = fopen("stdcpy.txt", "w");
