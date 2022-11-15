@@ -104,7 +104,7 @@ int prepare_socket(struct sockaddr_in *serv_addr, socklen_t serv_addr_len) {
 
 int main(int argc, char *argv[]) {
     if (argc < 2) {
-        printf("usage: echo_mpserv <Port>\n");
+        printf("usage: %s <Port>\n", argv[0]);
         return 1;
     }
     register_signal();

@@ -87,7 +87,7 @@ void write_routine(int sock_fd) {
 
 int main(int argc, char *argv[]) {
     if (argc < 3) {
-        printf("usage: echo_mpserv <IP> <Port>\n");
+        printf("usage: %s <IP> <Port>\n", argv[0]);
         return 1;
     }
     register_signal();
