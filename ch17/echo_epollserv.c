@@ -33,10 +33,10 @@ void run(int epfd, struct epoll_event *event) {
 
         len = strlen(buf);
         w_len = write(client_fd, buf, len);
-        if (w_len != len) {
-            printf("write back error: %s\n", strerror(errno));
+        if (w_len == len) {
+            return;
         }
-        return;
+        printf("write back error: %s\n", strerror(errno));
     } else if (len == 0) {
         printf("client socket has been closed.\n");
     } else {
