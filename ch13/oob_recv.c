@@ -82,7 +82,7 @@ int main(int argc, char *argv[]) {
     }
 
     struct sigaction act;
-    act.__sigaction_u.__sa_handler = urg_handler;
+    act.sa_handler = urg_handler;
     sigemptyset(&act.sa_mask);
     act.sa_flags = 0;
     int state = sigaction(SIGURG, &act, 0);

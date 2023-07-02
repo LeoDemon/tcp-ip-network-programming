@@ -21,7 +21,7 @@ int main(int argc, char **argv) {
 
     struct sockaddr *sockaddr = (struct sockaddr*) &server_addr;
 
-    printf("sockaddr.len: [%d]\n", sockaddr->sa_len);
+    // printf("sockaddr.len: [%d]\n", sockaddr->sa_len);
     printf("sockaddr.family: [%d]\n", sockaddr->sa_family);
     printf("sockaddr.data: [%s]\n", sockaddr->sa_data);
     for(int i=0;i<14;i++){

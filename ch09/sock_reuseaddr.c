@@ -8,7 +8,7 @@
 #include <string.h>
 #include <netinet/in.h>
 #include <stdlib.h>
-#include <mach/boolean.h>
+#include <stdbool.h>
 #include "common/log.h"
 
 int main(int argc, char **argv) {
@@ -28,7 +28,7 @@ int main(int argc, char **argv) {
 
     int reuse = atoi(argv[2]);
     if (reuse) {
-        int option = TRUE;
+        int option = true;
         setsockopt(listen_fd, SOL_SOCKET, SO_REUSEADDR, &option, sizeof(option));
     }
 

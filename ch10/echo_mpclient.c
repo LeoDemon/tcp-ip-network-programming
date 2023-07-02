@@ -11,6 +11,8 @@
 #include <sys/socket.h>
 #include <netinet/in.h>
 #include <arpa/inet.h>
+#include <string.h>
+#include <sys/wait.h>
 
 #define BUFFER_SIZE 128
 
@@ -24,7 +26,7 @@ void read_child_proc(int sig) {
 
 void register_signal() {
     struct sigaction act;
-    act.__sigaction_u.__sa_handler = read_child_proc;
+    act.sa_handler = read_child_proc;
     sigemptyset(&act.sa_mask);
     act.sa_flags = 0;
     sigaction(SIGCHLD, &act, 0);

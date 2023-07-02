@@ -8,7 +8,7 @@
 #include <string.h>
 #include <netinet/in.h>
 #include <stdlib.h>
-#include <mach/boolean.h>
+#include <stdbool.h>
 #include <arpa/inet.h>
 #include "common/log.h"
 
@@ -27,7 +27,7 @@ int main(int argc, char **argv) {
         error_handling("create socket error");
     }
 
-    int option = TRUE;
+    int option = true;
     setsockopt(listen_fd, SOL_SOCKET, SO_REUSEADDR, &option, sizeof(option));
 
     if (bind(listen_fd, (struct sockaddr *) &server_addr, sizeof(server_addr)) == -1) {

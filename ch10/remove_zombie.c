@@ -19,7 +19,7 @@ void recycle_child(int signal) {
 
 void register_signal() {
     struct sigaction act;
-    act.__sigaction_u.__sa_handler = recycle_child;
+    act.sa_handler = recycle_child;
     sigemptyset(&act.sa_mask);
     act.sa_flags = 0;
     sigaction(SIGCHLD, &act, 0);
@@ -27,7 +27,7 @@ void register_signal() {
 
 void register_signal_default() {
     struct sigaction act;
-    act.__sigaction_u.__sa_handler = NULL;
+    act.sa_handler = NULL;
     sigemptyset(&act.sa_mask);
     act.sa_flags = 0;
     sigaction(SIGCHLD, &act, 0);
