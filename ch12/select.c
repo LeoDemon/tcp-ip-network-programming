@@ -22,11 +22,11 @@ int main(int argc, char *argv[]) {
     // timeout.tv_usec = 0;
     while (1) {
         // Linux 下需要放这里
-        timeout.tv_sec = 3;
+        timeout.tv_sec = 10;
         timeout.tv_usec = 0;
 
-        printf("timeout: %ld\n", timeout.tv_sec);
-        printf("reads[0]: %d, temps[0]: %d\n", reads.__fds_bits[0], temps.__fds_bits[0]);
+        printf("---timeout: %ld\n", timeout.tv_sec);
+        printf("---reads[0]: %ld, temps[0]: %ld\n", reads.__fds_bits[0], temps.__fds_bits[0]);
         temps = reads;
         result = select(1, &temps, NULL, NULL, &timeout);
         if (-1 == result) {
