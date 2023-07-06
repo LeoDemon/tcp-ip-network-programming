@@ -35,7 +35,8 @@ int main(int argc, char **argv) {
     }
 
     char message[BUF_SIZE];
-    int message_len = 0, recv_len = 0, read_len = 0;
+    ssize_t recv_len = 0, read_len = 0;
+    size_t message_len = 0;
     while (1) {
         fputs("Input(Q to quit): ", stdout);
         fgets(message, BUF_SIZE, stdin);
@@ -45,6 +46,10 @@ int main(int argc, char **argv) {
         }
 
         message_len = strlen(message);
+        if (message[message_len - 1] == '\n') {
+            message[message_len - 1] = '\0';
+            message_len = message_len - 1;
+        }
         if (message_len != write(client_socket, message, strlen(message))) {
             printf("write message error, quit...\n");
             break;
@@ -63,7 +68,7 @@ int main(int argc, char **argv) {
         }
 
         message[message_len] = '\0';
-        printf("Message from server: %s", message);
+        printf("Message from server: %s\n", message);
     }
     close(client_socket);
 
