@@ -14,3 +14,6 @@ add_executable(thread_mutex thread_mutex.c)
 # 为某个指定目标添加编译选项
 target_compile_definitions(thread_mutex PUBLIC _REENTRANT)
 target_link_libraries(thread_mutex pthread)
+
+add_executable(thread_semaphore thread_semaphore.c)
+target_link_libraries(thread_semaphore pthread)
