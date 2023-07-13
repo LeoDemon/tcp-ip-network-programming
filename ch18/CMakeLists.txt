@@ -17,3 +17,9 @@ target_link_libraries(thread_mutex pthread)
 
 add_executable(thread_semaphore thread_semaphore.c)
 target_link_libraries(thread_semaphore pthread)
+
+add_executable(chat_client chat_client.c)
+target_link_libraries(chat_client pthread)
+
+add_executable(chat_server chat_server.c)
+target_link_libraries(chat_server pthread)
