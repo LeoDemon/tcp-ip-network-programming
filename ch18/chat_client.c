@@ -95,7 +95,7 @@ void *send_msg(void *arg) {
             printf("no data read from stdin...\n");
             break;
         } else if (strcmp(msg, "q\n") == 0 || strcmp(msg, "Q\n") == 0) {
-            printf("quit now...\n");
+            printf("bye bye...\n");
             break;
         }
         sprintf(name_msg, "[%s]: %s", name, msg);

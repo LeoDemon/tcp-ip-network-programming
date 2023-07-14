@@ -38,14 +38,24 @@ int main(int argc, char *argv[]) {
 
     struct sockaddr_in server_sockaddr, client_sockaddr;
     memset(&server_sockaddr, '\0', sizeof(server_sockaddr));
-    int client_sockaddr_len = sizeof(client_sockaddr);
+    socklen_t client_sockaddr_len = sizeof(client_sockaddr);
 
     int server_sock = socket(PF_INET, SOCK_STREAM, 0);
+    if (server_sock < 0) {
+        printf("create socket failed: [%s]\n", strerror(errno));
+    }
+
+    int reuse = 1;
+    int ret = setsockopt(server_sock, SOL_SOCKET, SO_REUSEADDR, &reuse, sizeof(reuse));
+    if (ret < 0) {
+        error_handle("set socket option failed", server_sock);
+    }
+
     server_sockaddr.sin_family = AF_INET;
     server_sockaddr.sin_addr.s_addr = htonl(INADDR_ANY);
     server_sockaddr.sin_port = htons(atoi(argv[1]));
 
-    int ret = bind(server_sock, (struct sockaddr *) &server_sockaddr, sizeof(server_sockaddr));
+    ret = bind(server_sock, (struct sockaddr *) &server_sockaddr, sizeof(server_sockaddr));
     if (ret < 0) {
         error_handle("bind socket failed", server_sock);
     }
