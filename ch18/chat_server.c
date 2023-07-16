@@ -43,6 +43,7 @@ int main(int argc, char *argv[]) {
     int server_sock = socket(PF_INET, SOCK_STREAM, 0);
     if (server_sock < 0) {
         printf("create socket failed: [%s]\n", strerror(errno));
+        return -2;
     }
 
     int reuse = 1;
