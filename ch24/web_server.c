@@ -18,13 +18,9 @@
 #define MAX_CLIENT 128
 
 void *request_handler(void *arg);
-
 char *content_type(char *file);
-
 void send_error(FILE *fp);
-
 void send_data(FILE *fp, char *content_type, char *file_name);
-
 void error_handling(char *message, int sock);
 
 int main(int argc, char *argv[]) {
@@ -138,11 +134,13 @@ void send_data(FILE *fp, char *content_type, char *file_name) {
     bzero(content_type_header, sizeof(content_type_header));
     bzero(buf, sizeof(buf));
     bzero(content_len, sizeof(content_len));
-    sprintf(content_type_header, "Content-type:%s\r\n\r\n", content_type);
+    sprintf(content_type_header, "Content-type:%s;charset=utf-8\r\n\r\n", content_type);
 
     FILE *send_file = fopen(file_name, "r");
     if (NULL == send_file) {
         send_error(fp);
+        fclose(fp);
+        printf("no such file: [%s]...\n", file_name);
         return;
     }
 
@@ -185,13 +183,16 @@ char *content_type(char *file) {
 void send_error(FILE *fp) {
     char protocol[] = "HTTP/1.1 400 Bad Request\r\n";
     char server[] = "Server:Linux Web Server \r\n";
-    char content_len[] = "Content-length:2048\r\n";
-    char content_type[] = "Content-type:text/html\r\n\r\n";
+    char content_len[SMALL_BUF];
+    char content_type[] = "Content-type:text/html;charset=utf-8\r\n\r\n";
 
     char content[] = "<html>"
                      "<head><title>Network</title></head>"
-                     "<body><font size=+2><br>Error, pls check request method and file name!</font></body>"
+                     "<body><font size=+1><br>Error, pls check request method and file name!</font></body>"
                      "</html>";
+
+    bzero(content_len, sizeof(content_len));
+    sprintf(content_len, "Content-length:%lu\r\n", strlen(content));
 
     fputs(protocol, fp);
     fputs(server, fp);
